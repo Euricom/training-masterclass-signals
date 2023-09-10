@@ -13,8 +13,8 @@
     "tailwind": "tailwind-config-viewer -o"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Peter Cosemans",
+  "license": "MIT",
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
     "@types/node": "^18.11.13",

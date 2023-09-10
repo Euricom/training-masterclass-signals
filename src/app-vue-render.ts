@@ -1,4 +1,4 @@
-import { ref, createApp } from './vue';
+import { ref, createApp, computed } from './vue';
 
 const appComponent = {
   template: `

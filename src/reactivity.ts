@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 let activeEffect: Subscriber | null;
 
-type Subscriber = () => void;
+type Subscriber<TResult = void> = () => TResult;
 
 export class Dep {
   subscribers = new Set<Subscriber>();
@@ -19,7 +20,11 @@ export class Dep {
 }
 
 // when state changes, run the callback function
-export function effect(cbFn: Subscriber) {
+// alternative names:
+//    whenStateChanged: my presentation (initially)
+//    createEffect: Solid
+//    effect: Angular 16+
+export function createEffect(cbFn: Subscriber): void {
   // set the fn as the active effect and run it
   activeEffect = cbFn;
   cbFn();

@@ -1,4 +1,4 @@
-import { effect, computed, ref } from './vue';
+import { createEffect, ref } from './vue';
 
 //
 // create a reactive state using a ref
@@ -14,10 +14,10 @@ button.addEventListener('click', () => {
 });
 
 // computed value
-const plusOne = computed(() => count.value + 10);
+const plusOne = () => count.value + 10;
 
 // response to changes
-effect(() => {
+createEffect(() => {
   const countEl = document.getElementById('count') as HTMLInputElement;
   countEl.textContent = `count is ${count.value} + 10 = ${plusOne()}`;
 });

@@ -1,6 +1,15 @@
-import { Dep } from '../reactivity';
+import { Dep, createEffect } from '../reactivity';
 
-export function ref<TValue>(value: TValue) {
+type Ref<TData> = {
+  value: TData;
+};
+
+/**
+ * Returns a reactive wrapper to the value passed in.
+ * @param value
+ * @returns
+ */
+export function ref<TValue>(value: TValue): Ref<TValue> {
   const dep = new Dep();
   return {
     get value() {
@@ -15,8 +24,17 @@ export function ref<TValue>(value: TValue) {
   };
 }
 
+/**
+ * Returns a reactive function wrapper thats
+ * @param value
+ * @returns
+ */
 export function computed<TValue>(getter: () => TValue) {
-  return getter;
+  const computedValue = ref<TValue>(undefined as ReturnType<typeof getter>);
+  createEffect(() => {
+    computedValue.value = getter();
+  });
+  return computedValue;
 }
 
 export * from './render';

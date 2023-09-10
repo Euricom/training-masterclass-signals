@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-loop-func */
 
-import { effect } from '../reactivity';
+import { createEffect } from '../reactivity';
 
 /* eslint-disable no-restricted-syntax */
 export type Component = {
@@ -27,7 +27,7 @@ function walk(root: Element, state: Record<string, unknown>) {
           });
         } else if (name === ':class') {
           // register state changes
-          effect(() => {
+          createEffect(() => {
             childNode.className = evaluateExpression(value, state);
           });
         }
@@ -55,7 +55,7 @@ function walk(root: Element, state: Record<string, unknown>) {
         exp = exp.replace(/(\r\n|\n|\r)/gm, ''); // remove new lines
 
         // register state changes
-        effect(() => {
+        createEffect(() => {
           textNode.data = evaluateExpression(exp, state);
         });
       }

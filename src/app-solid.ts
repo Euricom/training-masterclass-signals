@@ -1,4 +1,4 @@
-import { createSignal, effect } from './solid';
+import { createSignal, createEffect } from './solid';
 
 //
 // create a reactive state (using a signal)
@@ -15,7 +15,7 @@ button.addEventListener('click', () => {
 });
 
 // response to changes
-effect(() => {
+createEffect(() => {
   const countEl = document.getElementById('count') as HTMLInputElement;
   countEl.textContent = `count is ${count()}`;
 });

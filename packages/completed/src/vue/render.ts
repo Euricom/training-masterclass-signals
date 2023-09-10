@@ -2,7 +2,6 @@
 
 import { createEffect } from '../reactivity';
 
-/* eslint-disable no-restricted-syntax */
 export type Component = {
   template: string;
   setup: () => Record<string, unknown>;
@@ -15,7 +14,7 @@ function evaluateExpression(exp: string, state: Record<string, unknown>) {
   return fn(...Object.values(state));
 }
 
-function walk(root: Element, state: Record<string, unknown>) {
+export function render(root: Element, state: Record<string, unknown>) {
   for (const node of root.childNodes) {
     const childNode = node as Element;
     if (childNode.nodeType === 1 /* ELEMENT */) {
@@ -33,7 +32,7 @@ function walk(root: Element, state: Record<string, unknown>) {
         }
       }
       // recursively walk this element's children
-      walk(childNode, state);
+      render(childNode, state);
     } else if (node.nodeType === 3 /* TEXT */) {
       const textNode = node as Node as CharacterData;
       const raw = textNode.data;
@@ -79,7 +78,7 @@ export function createApp(appComponent: Component) {
       // walk the resulting DOM tree and look
       // for directives or bindings like
       // `@click` and `{{ }}`
-      walk(root, state);
+      render(root, state);
     },
   };
 }

@@ -32,7 +32,6 @@ export function reactive<TObj extends Record<PropertyKey, unknown>>(raw: TObj) {
       return isPlainObject(value) ? reactive(value) : value;
     },
     set(target, key: keyof TObj, value) {
-      // eslint-disable-next-line no-param-reassign
       target[key] = value;
       getDep(target, key).trigger();
       return true;

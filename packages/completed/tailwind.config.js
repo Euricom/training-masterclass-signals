@@ -1,5 +1,3 @@
-/* eslint-disable global-require */
-/* eslint-disable import/no-extraneous-dependencies */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./index.html', './src/**/*.{html,js,ts}'],
@@ -7,4 +5,7 @@ module.exports = {
     extend: {},
   },
   plugins: [require('daisyui')],
+  daisyui: {
+    logs: false,
+  },
 };

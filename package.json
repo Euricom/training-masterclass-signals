@@ -1,0 +1,14 @@
+{
+  "name": "masterclass-signals",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "keywords": [],
+  "author": "Peter Cosemans",
+  "license": "LIT",
+  "devDependencies": {},
+  "dependencies": {},
+  "workspaces": [
+    "packages/*"
+  ]
+}

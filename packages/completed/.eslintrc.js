@@ -17,6 +17,7 @@ module.exports = {
       extends: ['airbnb-typescript/base', 'plugin:@typescript-eslint/recommended'],
       rules: {
         '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
       },
     },
   ],
@@ -24,5 +25,9 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-plusplus': 'off',
     'no-console': 'off',
+    'global-require': 'off',
+    'no-param-reassign': 'off',
+    'no-cond-assign': 'off',
+    'no-restricted-syntax': 'off',
   },
 };
